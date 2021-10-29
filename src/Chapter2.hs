@@ -336,7 +336,9 @@ from it!
 ghci> :l src/Chapter2.hs
 -}
 subList :: Int -> Int -> [a] -> [a]
-subList from to what = take (to - from + 1) $ drop from what
+subList from to what
+  | from>=0 && to >= from = take (to - from + 1) $ drop from what
+  | otherwise = []
 
 {- |
 =⚔️= Task 4
